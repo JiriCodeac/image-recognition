@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="e2c2ca13-4541-44f2-9dec-60c4a501a39a" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.codeac.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.codeac.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.editorconfig" beforeDir="false" afterPath="$PROJECT_DIR$/.editorconfig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.eslintrc.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.eslintrc.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/app.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/app.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/components/ChildProcess.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/ChildProcess.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/components/Configurator.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/Configurator.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/components/Version.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/Version.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/components/responses.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/responses.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/components/utils.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/utils.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/config/api/openapi.yml" beforeDir="false" afterPath="$PROJECT_DIR$/app/config/api/openapi.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/config/config.yml" beforeDir="false" afterPath="$PROJECT_DIR$/app/config/config.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/config/services.yml" beforeDir="false" afterPath="$PROJECT_DIR$/app/config/services.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/AnalysisController.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/AnalysisController.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/BaseController.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/BaseController.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/BaseHttpController.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/BaseHttpController.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/BestFramesController.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/BestFramesController.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/DashboardController.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/DashboardController.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/DetectionsController.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/DetectionsController.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/FrameController.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/FrameController.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/HealthCheckController.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/HealthCheckController.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/ImageController.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/ImageController.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/SetupController.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/SetupController.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/detectors/BaseDetector.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/detectors/BaseDetector.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/detectors/WildLifeDetector.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/detectors/WildLifeDetector.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/detectors/wildlife/detection/Detector.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/detectors/wildlife/detection/Detector.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/detectors/wildlife/detection/PTDetector.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/detectors/wildlife/detection/PTDetector.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/detectors/wildlife/detection/visualization_utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/detectors/wildlife/detection/visualization_utils.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/detectors/wildlife/run.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/detectors/wildlife/run.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/exceptions/DetectionFailedException.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/exceptions/DetectionFailedException.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/exceptions/FileAlreadySkippedException.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/exceptions/FileAlreadySkippedException.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/exceptions/FrameExtractionFailedException.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/exceptions/FrameExtractionFailedException.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/exceptions/InvalidFilePathException.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/exceptions/InvalidFilePathException.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/exceptions/NoFileFoundException.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/exceptions/NoFileFoundException.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/exceptions/NotEnoughFramesForAnalysisException.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/exceptions/NotEnoughFramesForAnalysisException.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/factories/DatabaseConnectionFactory.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/factories/DatabaseConnectionFactory.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/factories/FtpClientFactory.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/factories/FtpClientFactory.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/factories/LoggerFactory.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/factories/LoggerFactory.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/factories/S3ClientFactory.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/factories/S3ClientFactory.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/locales/cs.json" beforeDir="false" afterPath="$PROJECT_DIR$/app/locales/cs.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/locales/en.json" beforeDir="false" afterPath="$PROJECT_DIR$/app/locales/en.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/models/FtpModel.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/FtpModel.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/models/MetadataModel.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/MetadataModel.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/models/S3Model.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/S3Model.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/models/StorageModel.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/StorageModel.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/models/TmpModel.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/TmpModel.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/models/VideoModel.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/VideoModel.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/models/entities/File.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/entities/File.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/models/entities/Frame.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/entities/Frame.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/models/entities/Report.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/entities/Report.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/router/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/router/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/types/WildLifeDetections.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/types/WildLifeDetections.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/components/footer.njk" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/components/footer.njk" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/components/frame.njk" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/components/frame.njk" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/components/header.njk" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/components/header.njk" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/components/menuTimeline.njk" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/components/menuTimeline.njk" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/dashboard.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/dashboard.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/detections.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/detections.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/files.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/files.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/frame-list.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/frame-list.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker-compose.dev.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.dev.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/jest.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/jest.config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/local.ts" beforeDir="false" afterPath="$PROJECT_DIR$/local.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nodemon.json" beforeDir="false" afterPath="$PROJECT_DIR$/nodemon.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/release/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/release/Makefile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/components/Configurator.ts" beforeDir="false" afterPath="$PROJECT_DIR$/tests/components/Configurator.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/components/Version.ts" beforeDir="false" afterPath="$PROJECT_DIR$/tests/components/Version.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/detectors/BaseDetector.ts" beforeDir="false" afterPath="$PROJECT_DIR$/tests/detectors/BaseDetector.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/models/FtpModel.ts" beforeDir="false" afterPath="$PROJECT_DIR$/tests/models/FtpModel.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/testContainer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/tests/testContainer.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/tsconfig.json" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2QyjGhT5C7cxrufL1fJ33qbNZ8U" />
+  <component name="ProjectViewState">
+    <option name="autoscrollFromSource" value="true" />
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "main",
+    "ignore.virus.scanning.warn.message": "true",
+    "last_opened_file_path": "C:/projects/image-recognition",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "settings.editor.selected.configurable": "preferences.keymap",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="e2c2ca13-4541-44f2-9dec-60c4a501a39a" name="Changes" comment="" />
+      <created>1686332621316</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1686332621316</updated>
+      <workItem from="1686332622511" duration="619000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>

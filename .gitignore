@@ -1,0 +1,9 @@
+other/
+storage/
+*.pyc
+s3-data/
+ftp-data/
+log/
+mysql-data/
+node_modules/
+requirements/

@@ -1,0 +1,65 @@
+version: "3.9"
+
+services:
+  mysql:
+    image: mariadb:latest
+    environment:
+      MYSQL_ROOT_PASSWORD: forester
+      MYSQL_DATABASE: forester
+      MYSQL_USER: forester
+      MYSQL_PASSWORD: forester
+    expose:
+      - 3306
+
+  s3:
+    image: minio/minio:latest
+    environment:
+      MINIO_ROOT_USER: forester
+      MINIO_ROOT_PASSWORD: forester
+    entrypoint: sh
+    command: -c 'mkdir -p /data/reolink /data/results && minio server /data --console-address=0.0.0.0:9001'
+
+  ftp:
+    image: stilliard/pure-ftpd
+    expose:
+      - 21
+      - 30000-30009
+    environment:
+      PUBLICHOST: localhost
+      FTP_USER_NAME: reolink
+      FTP_USER_PASS: reolink
+      FTP_USER_HOME: /home/reolink
+    restart: always
+
+  forester:
+    build: .
+    environment:
+      DB_ENGINE: mysql
+      DB_ROOT_USER: root
+      DB_ROOT_PASSWORD: forester
+      DB_USER: forester
+      DB_PASSWORD: forester
+      DB_HOST: mysql
+      DB_NAME: forester
+      FTP_HOST: ftp
+      FTP_USER: reolink
+      FTP_PASSWORD: reolink
+      #TF_CPP_MIN_LOG_LEVEL: 0
+      AWS_ACCESS_KEY_ID: forester
+      AWS_SECRET_ACCESS_KEY: forester
+      S3_ENDPOINT: http://s3:9000
+      S3_BUCKET_SOURCE: reolink
+      S3_BUCKET_RESULTS: results
+    healthcheck:
+      test: [ "CMD", "curl", "-f", "http://localhost:4000/v1/setup" ]
+    volumes:
+      - .:/www
+    links:
+      - ftp
+      - s3
+      - mysql
+    depends_on:
+      - ftp
+      - s3
+      - mysql
+    working_dir: /www

@@ -1,0 +1,30 @@
+{% include 'components/header.njk' %}
+{% import 'components/frame.njk' as renderFrame %}
+<div class="row">
+    <div class="col">
+        <h2 class="mt-2">Last Detections</h2>
+        <ul class="list-group list-group-flush">
+            {% for file in detections %}
+            <li class="list-group-item">
+                <h4 title="{{file.file.get('path')}}">
+                    {{file.file.get('source')}} - {{file.file.getCapturedDate()}} {{file.file.getCapturedTime()}}
+                    <small class="text-muted">{{file.file.getSizeFormatted()}} / {{file.file.getLengthFormatted()}}</small>
+                </h4>
+                <ul class="list-group list-group-flush">
+                    {% for report in file.reports %}
+                    <li class="list-group-item">
+                        {{report.report.get('type')}} analysis duration: {{report.report.getDurationFormatted()}}
+                        <ul class="list-group list-group-flush">
+                            {% for frame in report.frames %}
+                                {{ renderFrame.renderFrame(frame, thumbnails, report.report, file.file, canDelete) }}
+                            {% endfor %}
+                        </ul>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+{% include 'components/footer.njk' %}

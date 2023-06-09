@@ -1,0 +1,18 @@
+--find-links https://download.pytorch.org/whl/torch_stable.html
+
+matplotlib>=3.3
+numpy>=1.18.5
+humanfriendly
+Pillow>=7.1.2
+psutil  # system resources
+torch==1.10.0+cpu
+torchvision==0.11.0+cpu
+PyYAML>=5.3.1
+tqdm>=4.64.0
+requests>=2.23.0
+
+# Plotting
+pandas>=1.1.4
+seaborn>=0.11.0
+
+ipython

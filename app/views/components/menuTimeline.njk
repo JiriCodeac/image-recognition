@@ -1,0 +1,31 @@
+<ul class="list-group">
+    {% for year in timelineMenu %}
+        <li class="list-group-item">
+            <div class="d-flex justify-content-between align-items-start">
+                <strong>{{ year.year }}</strong>
+                <small>{{ year.size | filesize }}</small>
+                <small class="badge rounded-pill text-bg-primary">{{ year.videos }}</small>
+            </div>
+            <ul class="list-group list-group-flush">
+                {% for month in year.months %}
+                    <li class="list-group-item">
+                        <span>
+                            {{ __('month.' + month.month) | capitalize }}
+                            <small class="badge rounded-pill text-bg-secondary">{{ month.videos }}</small>
+                        </span>
+                        <ul>
+                            {% for day in month.days %}
+                                <li>
+                                    <a href="?date={{ day.date }}" class="btn btn-link">
+                                        {{ day.day }}
+                                        <small class="badge rounded-pill text-bg-info">{{ day.videos }}</small>
+                                    </a>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    </li>
+                {% endfor %}
+            </ul>
+        </li>
+    {% endfor %}
+</ul>

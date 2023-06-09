@@ -1,0 +1,26 @@
+---
+parameters:
+  environmentIdentifier: nonsense-environment
+
+  database:
+    dbName: forester
+    host: localhost
+    user: user
+    password: password
+    engine: mysql
+    logging: false
+
+  ftp:
+    host: nonsense-host
+    user: nonsense-user
+    password: nonsense-password
+
+  s3:
+    region: eu-central-1
+    endpoint: ''
+    buckets:
+      source: nonsense-source-bucket
+      results: nonsense-results-bucket
+
+  logger:
+    level: debug

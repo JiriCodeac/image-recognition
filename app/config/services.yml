@@ -1,0 +1,132 @@
+parameters:
+  config.path: config/config.yml
+
+services:
+  # Components
+  configurator:
+    class: 'components/Configurator'
+    arguments:
+      - '%config.path%'
+    calls:
+      - method: selectAndApplyEnvParams
+  version:
+    class: 'components/Version'
+
+  # Factories
+  logger:
+    factory:
+      class: 'factories/LoggerFactory'
+      method: 'createInstance'
+    arguments:
+      - '@configurator'
+  s3Client:
+    factory:
+      class: 'factories/S3ClientFactory'
+      method: 'createInstance'
+    arguments:
+      - '@configurator'
+  ftpClient:
+    factory:
+      class: 'factories/FtpClientFactory'
+      method: 'createInstance'
+    arguments:
+      - '@configurator'
+      - '@logger'
+  database:
+    factory:
+      class: 'factories/DatabaseConnectionFactory'
+      method: 'createConnection'
+    arguments:
+      - '@configurator'
+      - '@logger'
+
+  # Models
+  s3Model:
+    class: 'models/S3Model'
+    arguments:
+      - '@s3Client'
+  ftpModel:
+    class: 'models/FtpModel'
+    arguments:
+      - '@ftpClient'
+      - '@logger'
+  tmpModel:
+    class: 'models/TmpModel'
+    arguments:
+      - '@logger'
+  metadataModel:
+    class: 'models/MetadataModel'
+    arguments:
+      - '@database'
+  storageModel:
+    class: 'models/StorageModel'
+    arguments:
+      - '@ftpModel'
+      - '@s3Model'
+      - '@logger'
+      - '@configurator'
+  videoModel:
+    class: 'models/VideoModel'
+    arguments:
+      - '@storageModel'
+      - '@tmpModel'
+      - '@metadataModel'
+      - '@wildLifeDetector'
+      - '@logger'
+
+  # Detectors
+  wildLifeDetector:
+    class: 'detectors/WildLifeDetector'
+    arguments:
+      - '@logger'
+
+  # Controllers
+  analysisController:
+    class: 'controllers/AnalysisController'
+    arguments:
+      - '@videoModel'
+      - '@storageModel'
+      - '@logger'
+  dashboardController:
+    class: 'controllers/DashboardController'
+    arguments:
+      - '@metadataModel'
+      - '@s3Model'
+      - '@tmpModel'
+      - '@configurator'
+  detectionsController:
+    class: 'controllers/DetectionsController'
+    arguments:
+      - '@metadataModel'
+      - '@s3Model'
+      - '@configurator'
+  imageController:
+    class: 'controllers/ImageController'
+    arguments:
+      - '@s3Model'
+      - '@logger'
+      - '@configurator'
+  bestFramesController:
+    class: 'controllers/BestFramesController'
+    arguments:
+      - '@metadataModel'
+      - '@s3Model'
+      - '@configurator'
+  frameController:
+    class: 'controllers/FrameController'
+    arguments:
+      - '@metadataModel'
+      - '@s3Model'
+      - '@logger'
+      - '@configurator'
+  healthCheckController:
+    class: 'controllers/HealthCheckController'
+    arguments:
+      - '@version'
+      - '@ftpModel'
+      - '@s3Model'
+      - '@configurator'
+  setupController:
+    class: 'controllers/SetupController'
+    arguments:
+      - '@database'

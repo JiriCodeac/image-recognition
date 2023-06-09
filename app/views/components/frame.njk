@@ -1,0 +1,42 @@
+{% macro renderFrame(frame, thumbnails, report = null, file = null, canDelete = false) %}
+    <li class="list-group-item">
+        <h5>
+            <i class="fa-duotone fa-film"></i>
+            Frame {{ frame.get('timestamp') }}
+            {% if canDelete %}
+                <span>
+                    <a class="btn btn-danger btn-sm small" href="/frame/delete?id={{ frame.get('id') }}"
+                       onclick="return deleteFrame(this)" title="{{ __('delete') | capitalize }} {{ __('frame') }}">
+                        <i class="fa-solid fa-xmark-large"></i>&nbsp;
+                        {{ __('delete') | capitalize }}
+                    </a>
+                </span>
+            {% endif %}
+        </h5>
+        <div class="row">
+            {% for detection in frame.getDetectionsFormatted(report, file) %}
+                <div class="col col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2 text-center">
+                    <a
+                            href="/"
+                            data-fancybox="gallery-{{ report.get('id') }}"
+                            data-caption="{{ __('frame') | capitalize }} {{ frame.get('timestamp') }} {{ __('picture') }} {{ detection.detectionId }}"
+                    >
+                        <img
+                                width="220"
+                                loading="lazy"
+                                class="img-thumbnail"
+                                id="detection-{{ frame.get('id') }}-{{ detection.detectionId }}"
+                                src="{{ thumbnails[detection.imagePath] }}"
+                        >
+                    </a>
+                    <p>
+                        <strong>{{ detection.category }}</strong>
+                        <span class="badge text-bg-{{ detection.confidenceLevel }}" title="Confidence">
+                            {{ detection.confidencePercentage }}%
+                        </span>
+                    </p>
+                </div>
+            {% endfor %}
+        </div>
+    </li>
+{% endmacro %}

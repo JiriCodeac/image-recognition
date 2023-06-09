@@ -1,0 +1,90 @@
+{% include 'components/header.njk' %}
+{% import 'components/frame.njk' as renderFrame %}
+<div class="row">
+    <div class="col col-12 col-lg-2 mt-4">
+        {% include 'components/menuTimeline.njk' %}
+    </div>
+    <div class="col col-12 col-lg-10">
+        <h1 class="mt-2">
+            {{ __('dashboard') | capitalize }}
+            <small class="text-muted">
+                {{ chartYear }}
+                <i class="fa-solid fa-camera-cctv"></i>
+            </small>
+        </h1>
+
+        <p>
+            <span class="btn-group">
+                {% for year in years %}
+                <a class="btn btn-primary{{ ' active' if year==chartYear }}" href="/?chartYear={{year}}">{{year}}</a>
+                {% endfor %}
+            </span>
+            <a class="btn btn-outline-secondary" href="/best-frames?from={{ chartYear }}-01-01&to={{ chartYear }}-12-31&limit=50">
+                <i class="fa-solid fa-arrow-up-right-dots"></i> {{ __('bestOf') | capitalize }} {{ chartYear }}
+            </a>
+        </p>
+        <canvas id="videos-per-year"></canvas>
+
+        {% if wildFireStatus %}
+            <div class="mb-2">
+                <h2>{{ __('currentAnalysis') | capitalize }}</h2>
+                {% if wildFireStatus.percentage %}
+                <div class="progress mb-2">
+                  <div class="progress-bar progress-bar-striped progress-bar-animated" style="width: {{ wildFireStatus.percentage }}%">
+                      {{ wildFireStatus.percentage }}%
+                  </div>
+                </div>
+                {% endif %}
+                <code>{{ wildFireStatus.message }}</code>
+            </div>
+        {% endif %}
+
+        <h2>{{ __('stats') | capitalize }}</h2>
+        <dl>
+            <dt>{{ __('totalVideosProcessedInSize') | capitalize }}:</dt>
+            <dd>{{totalVideoSize}}</dd>
+        </dl>
+
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/date-fns/1.30.1/date_fns.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
+        <script>
+            const ctx = document.getElementById('videos-per-year');
+
+            new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: {{ dates | safe }},
+                    datasets: [{
+                        label: 'Videos {{chartYear}}',
+                        data: {{ videos }},
+                        borderWidth: 1,
+                        cubicInterpolationMode: 'monotone',
+                        //tension: 0.4,
+                    }, {
+                        label: 'Videos with detections {{chartYear}}',
+                        data: {{ detections }},
+                        borderWidth: 1,
+                        cubicInterpolationMode: 'monotone',
+                        //tension: 0.4,
+                    }]
+                },
+                options: {
+                    scales: {
+                        x: {
+                            type: 'time',
+                            title: {
+                              display: true,
+                              text: 'Date'
+                            }
+                        },
+                        y: {
+                            beginAtZero: true,
+                        }
+                    }
+                }
+            });
+        </script>
+    </div>
+</div>
+{% include 'components/footer.njk' %}

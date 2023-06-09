@@ -1,0 +1,122 @@
+{% include 'components/header.njk' %}
+{% import 'components/frame.njk' as renderFrame %}
+
+<style>
+    .list-no-spacing {
+        padding-left: 0;
+        list-style: none;
+    }
+</style>
+
+<script>
+    window.deleteAllFrames = async (element) => {
+        const loading = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>';
+        element.innerHTML = loading;
+        element.disabled = true;
+
+        const frames = document.querySelectorAll('.js-delete');
+
+        for (const frame of frames) {
+            const url = frame.href;
+            frame.innerHTML = loading;
+            frame.disabled = true;
+
+            await fetch(url, {
+                method: 'post',
+            }).then(function (data) {
+                if (data.ok) {
+                    frame.parentElement.parentElement.parentElement.remove();
+                    element.innerText = 'Done';
+                    element.classList.remove('btn-danger');
+                    element.classList.add('btn-success');
+                } else {
+                    frame.innerText = 'Failed';
+                    element.innerText = 'Failed';
+                    throw new Error('Error');
+                }
+            });
+        }
+
+        return false;
+    }
+</script>
+
+<div class="row">
+    <div class="col">
+        <h2 class="mt-2 d-flex justify-content-between">
+            <span>
+                {% if best %}Best{% else %}Worst{% endif %}
+                Frames
+                <a href="/best-frames?from={{ from }}&to={{ to }}&limit={{ limit }}&best={{ not best }}">
+                    <i class="fa-duotone fa-sort {% if best %}fa-rotate-180{% endif %}"></i>
+                </a>
+            </span>
+            <small class="text-muted">
+                {{ from }}
+                <i class="fa-duotone fa-arrow-right"></i>
+                {{ to }}
+            </small>
+        </h2>
+
+        <ul class="{% if best %}list-group list-group-flush{% else %}row list-no-spacing{% endif %}">
+            {% for frame in frames %}
+            <li class="{% if best %}list-group-item{% else %}col col-12 col-md-6 col-lg-4 col-xl-2{% endif %}">
+                <div class="d-flex justify-content-between">
+                    <h5>
+                        <i class="fa-duotone fa-film"></i>
+                        {% if best %}Frame {% endif %}{{ frame.get('timestamp') }}
+                        {% if canDelete %}
+                        <a class="btn btn-danger btn-sm js-delete" href="/frame/delete?id={{ frame.get('id') }}"
+                           onclick="return deleteFrame(this)" title="Delete frame">
+                            <i class="fa-solid fa-xmark-large"></i>
+                            {% if best %}&nbsp; Delete{% endif %}
+                        </a>
+                        {% endif %}
+                    </h5>
+                    <p>
+                        <a href="/?date={{ frame.get('report').get('file').getCapturedDate() }}">
+                            <i class="fa-duotone fa-calendar-days"></i>
+                            {{ frame.get('report').get('file').getCapturedDate() }}</a>
+                        {{ frame.get('report').get('file').getCapturedTime() }}
+                    </p>
+                </div>
+                <div class="row">
+                    {% for detection in frame.getDetectionsFormatted() %}
+                    <div class="text-center col col-12 {% if best %}col-sm-6 col-md-4 col-lg-3 col-xl-2{% endif %}">
+                        <a
+                                href="/"
+                                data-fancybox="gallery"
+                                data-caption="Frame {{ frame.get('timestamp') }} picture {{ detection.detectionId }}"
+                        >
+                            <img
+                                    width="320"
+                                    class="img-thumbnail"
+                                    id="detection-{{ frame.get('id') }}-{{ detection.detectionId }}"
+                                    src="{{ thumbnails[detection.imagePath] }}"
+                            >
+                        </a>
+                        <p>
+                            <strong>{{ detection.category }}</strong>
+                            <span class="badge text-bg-{{ detection.confidenceLevel }}">
+                        {{ detection.confidencePercentage }}%
+                    </span>
+                        </p>
+                    </div>
+                    {% endfor %}
+                </div>
+            </li>
+            {% endfor %}
+        </ul>
+        {% if canDelete and not best %}
+        <p class="text-center">
+            <a class="btn btn-danger btn-sm" href="#"
+               onclick="return deleteAllFrames(this)" title="Delete all frames">
+                <i class="fa-solid fa-xmark-large"></i>&nbsp;
+                Delete all frames
+            </a>
+        </p>
+        {% endif %}
+    </div>
+</div>
+
+{% include 'components/footer.njk' %}

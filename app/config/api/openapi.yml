@@ -1,0 +1,195 @@
+openapi: 3.0.2
+info:
+  title: Forester API
+  version: latest
+paths:
+  "/":
+    get:
+      summary: Dashboard
+      description: Dashboard
+      parameters:
+        - in: query
+          name: date
+          schema:
+            type: string
+            format: date
+          description: Specific day selected
+        - in: query
+          name: chartYear
+          schema:
+            type: string
+          description: Specific year selected
+      responses:
+        '200':
+          $ref: '#/components/responses/BaseHtmlResponse'
+        '500':
+          $ref: '#/components/responses/Error'
+  "/frame/delete":
+    post:
+      summary: Delete Frame
+      description: Delete Frame
+      parameters:
+        - in: query
+          name: id
+          required: true
+          schema:
+            type: number
+          description: Specific frame identifier
+      responses:
+        '301':
+          description: OK
+        '500':
+          $ref: '#/components/responses/Error'
+  "/latest-detections":
+    get:
+      summary: Last Detections
+      description: Last Detections
+      responses:
+        '200':
+          $ref: '#/components/responses/BaseHtmlResponse'
+        '500':
+          $ref: '#/components/responses/Error'
+  "/best-frames":
+    get:
+      summary: Best Frames
+      description: Best Frames
+      parameters:
+        - in: query
+          name: from
+          schema:
+            type: string
+            format: date
+          description: Since when
+        - in: query
+          name: to
+          schema:
+            type: string
+            format: date
+          description: To when
+        - in: query
+          name: limit
+          schema:
+            type: number
+          description: Number of items
+        - in: query
+          name: best
+          schema:
+            type: boolean
+            default: true
+          description: ASC or DESC
+      responses:
+        '200':
+          $ref: '#/components/responses/BaseHtmlResponse'
+        '500':
+          $ref: '#/components/responses/Error'
+  /image/{path}:
+    get:
+      summary: Download a picture
+      description: Picture data is being downloaded
+      parameters:
+        - in: path
+          name: path
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          $ref: '#/components/responses/BaseBinaryResponse'
+        '500':
+          $ref: '#/components/responses/Error'
+  /v1/health-check:
+    get:
+      summary: Service Health
+      description: Returns a service status
+      responses:
+        '200':
+          $ref: '#/components/responses/GetHealthCheck'
+        '500':
+          $ref: '#/components/responses/Error'
+  /v1/setup:
+    get:
+      summary: Setup
+      responses:
+        '200':
+          description: OK
+        '201':
+          description: OK
+        '404':
+          description: Not Found
+        '500':
+          $ref: '#/components/responses/Error'
+      operationId: setup
+      parameters: []
+
+components:
+  schemas:
+    Error:
+      type: object
+      properties:
+        timestamp:
+          type: string
+          format: date-time
+        status:
+          type: integer
+        error:
+          type: string
+        message:
+          type: string
+        path:
+          type: string
+    HealthCheck:
+      description: Health Check response body
+      type: object
+      required:
+        - status
+        - stable
+        - versionInfo
+        - ftp
+        - s3Healthy
+      properties:
+        status:
+          type: string
+        stable:
+          type: boolean
+        versionInfo:
+          type: string
+        ftp:
+          type: string
+        s3Healthy:
+          type: boolean
+
+  responses:
+    BaseHtmlResponse:
+      description: Base HTML Response
+      content:
+        text/html:
+          schema:
+            description: Base HTML Response
+            type: string
+    BaseBinaryResponse:
+      description: Base Binary Response
+      content:
+        text/plain:
+          schema:
+            description: Base Binary Response
+            type: string
+            format: binary
+    GetHealthCheck:
+      description: The service is healthy
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/HealthCheck'
+    Error:
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    AuthorizationError:
+      description: Authorization Error
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+

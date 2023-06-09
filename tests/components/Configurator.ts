@@ -23,10 +23,10 @@ describe('Configurator', () => {
 		configurator.selectAndApplyEnvParams();
 
 		expect(configurator.parameters().number).toEqual(process.env.NUMBER);
-		expect(configurator.parameters('test.test2.test3')).toEqual(process.env.TEST_TEST2_TEST3);
-		expect(configurator.parameters('test.test2.test4')).toEqual(process.env.TEST_TEST2_TEST4);
-		expect(configurator.parameters('test.test2.enabled')).toStrictEqual(true);
-		expect(configurator.has('test.test2.enabled')).toBeTruthy();
-		expect(configurator.has('test.test2.disabled')).toBeFalsy();
+		expect(configurator.parameters('test.test3.test4')).toEqual(process.env.TEST_TEST2_TEST3);
+		expect(configurator.parameters('test.test3.test5')).toEqual(process.env.TEST_TEST2_TEST4);
+		expect(configurator.parameters('test.test3.enabled')).toStrictEqual(true);
+		expect(configurator.has('test.test3.enabled')).toBeTruthy();
+		expect(configurator.has('test.test3.disabled')).toBeFalsy();
 	});
 });

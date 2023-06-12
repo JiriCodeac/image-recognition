@@ -26,4 +26,5 @@
 	"analysisDuration": "délka analýzy",
 	"avgAnalysisTimePerFrame": "průměrná délka analýzy jednoho snímku",
 	"framesDetected": "počet detekovaných snímků"
+	"add": "přidat"
 }

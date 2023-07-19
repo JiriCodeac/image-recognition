@@ -25,5 +25,6 @@
 	"videos": "videos",
 	"analysisDuration": "analysis duration",
 	"avgAnalysisTimePerFrame": "AVG analysis time per frame",
-	"framesDetected": "frames detected"
+	"framesDetected": "frames detected",
+	"add": "add"
 }

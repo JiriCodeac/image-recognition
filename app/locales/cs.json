@@ -15,7 +15,6 @@
 	"currentAnalysis": "právě probíhající analýza",
 	"totalVideosProcessedInSize": "celkové objem zpracovaných videí",
 	"dashboard": "přehled",
-	"bestOf": "nejlepší z",
 	"best": "nejlepší",
 	"frames": "snímky",
 	"latest": "poslední",
@@ -26,4 +25,5 @@
 	"analysisDuration": "délka analýzy",
 	"avgAnalysisTimePerFrame": "průměrná délka analýzy jednoho snímku",
 	"framesDetected": "počet detekovaných snímků"
+	"add": "přidat"
 }

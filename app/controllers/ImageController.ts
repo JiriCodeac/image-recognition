@@ -27,7 +27,7 @@ export default class ImageController extends BaseHttpController {
 	async actionDefault(request: Request, response: Response): Promise<void> {
 		const imagePath = request.params?.path;
 
-		response.set('Cache-control', 'public, max-age=9999')
+		response.set('Cache-control', 'public, max-age=9999');
 
 		try {
 			const image = await this.s3Model.getObject(this.resultsBucketName, imagePath);
@@ -35,14 +35,14 @@ export default class ImageController extends BaseHttpController {
 			this.logger.info(`Serving '${imagePath}' image`);
 
 			const imageData = await image.Body?.transformToWebStream(); // or any other way to get a readable stream
-			const passThrough = new stream.PassThrough() // <---- this makes a trick with stream error handling
+			const passThrough = new stream.PassThrough(); // <---- this makes a trick with stream error handling
 			//@ts-ignore
 			stream.pipeline(imageData, passThrough, (err) => {
 				if (err) {
 					this.logger.error(err);
 					return response.sendStatus(400);
 				}
-			})
+			});
 			passThrough.pipe(response);
 		} catch (exception) {
 			this.logger.error(`File '${imagePath}' could not be obtained`, {exception});

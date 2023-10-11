@@ -11,5 +11,5 @@ tools:
     ext: '.js,.ts'
   tslint:
     enabled: false
-    pylint:
-        enabled: false
+  pylint:
+      enabled: false

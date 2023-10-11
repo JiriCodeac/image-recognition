@@ -11,3 +11,7 @@ tools:
     ext: '.js,.ts'
   tslint:
     enabled: false
+  pylint:
+      enabled: false
+  bandit:
+      enabled: false

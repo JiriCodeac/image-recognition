@@ -35,7 +35,7 @@ export function mergeDeep<T>(target: any, ...sources: Array<T>): Record<string, 
 export async function streamToBuffer(stream: NodeJS.ReadableStream): Promise<Buffer> {
 	const chunks: Array<any> = [];
 	for await (const chunk of stream) {
-		chunks.push(chunk)
+		chunks.push(chunk);
 	}
 	return Buffer.concat(chunks);
 }

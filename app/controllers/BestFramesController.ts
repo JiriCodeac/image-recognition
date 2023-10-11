@@ -32,8 +32,8 @@ export default class BestFramesController extends BaseHttpController {
 		const best = Boolean(request.query?.best) ?? true;
 
 		const toDate = Boolean(to) ? new Date(Date.parse(String(to))) : now;
-		const yesterday = new Date(toDate)
-		yesterday.setDate(yesterday.getDate() - 1)
+		const yesterday = new Date(toDate);
+		yesterday.setDate(yesterday.getDate() - 1);
 		const fromDate = from ? new Date(Date.parse(String(from))) : yesterday;
 
 		const frames = await this.metadataModel.getBestFrames(toDate, fromDate, limit, best);

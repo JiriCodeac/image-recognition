@@ -11,3 +11,5 @@ tools:
     ext: '.js,.ts'
   tslint:
     enabled: false
+    osvScanner:
+        enabled: false

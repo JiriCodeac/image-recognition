@@ -13,3 +13,5 @@ tools:
     enabled: false
   pylint:
       enabled: false
+  bandit:
+      enabled: false
